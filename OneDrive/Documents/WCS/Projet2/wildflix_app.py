@@ -12,8 +12,14 @@ import streamlit as st
 # Ajout titre
 st.title('Wildflix project !')
 
-# Import du fichier qui est dans le repo Github
-df_wildflix = pd.read_csv("wildflix_project.csv")
 
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  df_mod_daw = pd.read_csv(uploaded_file)
 
-st.write(df_wildflix.head())
+uploaded_file2 = st.file_uploader("Choose a file2")
+if uploaded_file2 is not None:
+  df = pd.read_csv(uploaded_file2)
+
+# Variables numeriques a prendre en compte 
+X = df_mod_daw.select_dtypes('number')
